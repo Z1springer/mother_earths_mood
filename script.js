@@ -1,3 +1,6 @@
+console.log("Here be linked")
+
+
 // GIVEN a weather dashboard with form inputs
 // WHEN I search for a city
 // THEN I am presented with current and future conditions for that city and that city is added to the search history
@@ -10,4 +13,23 @@
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
 // WHEN I open the weather dashboard
+
+
 // THEN I am presented with the last searched city forecast
+var searchHist = []
+
+document.querySelector("#search-city").addEventListener("submit", function (event) {
+    event.preventDefault();
+    var city = document.querySelector("#city").value
+    // console.log(city)
+    searchHist.push(city)
+    console.log(searchHist)
+    localStorage.setItem('latest-city', city)
+    document.querySelector("#search-history").innerHTML = ""
+    for (i = 0; i < searchHist.length; i++) {
+        console.log(searchHist[i])
+        var div = document.createElement("div")
+        div.textContent = searchHist[i]
+        document.querySelector("#search-history").appendChild(div)
+    }
+})

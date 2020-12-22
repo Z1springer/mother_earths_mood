@@ -24,7 +24,7 @@
                 <h2>Search a City</h2>
                 <form id="search-city">
                     <input type="text" id="city" required>
-                    <button>Search</button>
+                    <button id="log">Search</button>
                 </form>
                 <div id="search-history">
                 </div>
@@ -34,7 +34,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h3 id="city-date"></h3>
-                            <img src="" alt="">
+                            <img id="weatherIcon">
                             <p class="card-text current-temp"></p>
                             <p class="card-text current-hum"></p>
                             <p class="card-text current-wind"></p>
@@ -43,7 +43,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <!-- using bootstrap grid to display other weather cards -->
         <div class="mt-4 col-md-12">
@@ -51,45 +50,44 @@
             <div class="row" id="weather-cards">
                 <div class="card col-md-2 ml-4 bg-primary text-white">
                     <div class="card-body p-3 mothers-mood">
-                        <h4 class="card-title"></h4>
-                        <img src="">
-                        <p class="card-text mood-temp"></p>
-                        <p class="card-text mood-hum"></p>
+                        <h4 class="card-title" id="title0"></h4>
+                        <img id="weatherIcon0">
+                        <p class="card-text mood-temp" id="temp0"></p>
+                        <p class="card-text mood-hum" id="hum0"></p>
                     </div>
                 </div>
                 <div class="card col-md-2 ml-4 bg-primary text-white">
                     <div class="card-body p-3 mothers-mood">
-                        <h4 class="card-title"></h4>
-                        <img src="">
-                        <p class="card-text mood-temp"></p>
-                        <p class="card-text mood-hum"></p>
+                        <h4 class="card-title" id="title1"></h4>
+                        <img id="weatherIcon1">
+                        <p class="card-text mood-temp" id="temp1"></p>
+                        <p class="card-text mood-hum" id="hum1"></p>
                     </div>
                 </div>
                 <div class="card col-md-2 ml-4 bg-primary text-white">
                     <div class="card-body p-3 mothers-mood">
-                        <h4 class="card-title"></h4>
-                        <img src="">
-                        <p class="card-text mood-temp"></p>
-                        <p class="card-text mood-hum"></p>
+                        <h4 class="card-title" id="title2"></h4>
+                        <img id="weatherIcon2">
+                        <p class="card-text mood-temp" id="temp2"></p>
+                        <p class="card-text mood-hum" id="hum2"></p>
                     </div>
                 </div>
                 <div class="card col-md-2 ml-4 bg-primary text-white">
                     <div class="card-body p-3 mothers-mood">
-                        <h4 class="card-title"></h4>
-                        <img src="">
-                        <p class="card-text mood-temp"></p>
-                        <p class="card-text mood-hum"></p>
+                        <h4 class="card-title" id="title3"></h4>
+                        <img id="weatherIcon3">
+                        <p class="card-text mood-temp" id="temp3"></p>
+                        <p class="card-text mood-hum" id="hum3"></p>
                     </div>
                 </div>
-                <div class="card col-md-2 ml-4 bg-primary text-white">
+                <div class="card col-md-2 ml-4 bg-primary text-white" id="fri">
                     <div class="card-body p-3 mothers-mood">
-                        <h4 class="card-title"></h4>
-                        <img src="">
-                        <p class="card-text mood-temp"></p>
-                        <p class="card-text mood-hum"></p>
+                        <h4 class="card-title" id="title4"></h4>
+                        <img id="weatherIcon4">
+                        <p class="card-text mood-temp" id="temp4"></p>
+                        <p class="card-text mood-hum" id="hum4"></p>
                     </div>
                 </div>
-
             </div>
 
         </div>

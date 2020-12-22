@@ -7,7 +7,7 @@ var cityName = "";
 
 $("#log").on("click", function (event) {
     event.preventDefault();
-    cityName = $(this).prev().val()
+    cityName = $(this).prev().val();
     // console.log(cityName);
     loadData(cityName)
 })
@@ -36,9 +36,9 @@ function loadData(x) {
             }).then(function (answer) {// WHEN I view future weather conditions for that city
                 console.log(answer);
                 for (var i = 0; i < 5; i++) {// THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
-                    $("#title" + i).text(dateFormat(parseInt(answer.daily[i].dt)))
-                    $("#weatherIcon" + i).attr("src", `http://openweathermap.org/img/wn/${answer.daily[i].weather[0].icon}@4x.png`)
-                    $("#temp" + i).text(answer.daily[i].temp.day + " °F")
+                    $("#title" + i).text(dateFormat(parseInt(answer.daily[i].dt)));
+                    $("#weatherIcon" + i).attr("src", `http://openweathermap.org/img/wn/${answer.daily[i].weather[0].icon}@4x.png`);
+                    $("#temp" + i).text(answer.daily[i].temp.day + " °F");
                     $("#hum" + i).text(answer.daily[i].humidity + "% humidity")
                 }
                 // console.log(answer.current.uvi);
@@ -53,7 +53,7 @@ function loadData(x) {
 }
 
 function dateFormat(sequence) {
-    console.log(sequence)
+    // console.log(sequence)
     var myDate = new Date(sequence * 1000);
     var day = myDate.getDate();
     var month = myDate.getMonth() + 1;
@@ -68,18 +68,21 @@ function dateFormat(sequence) {
 
 var searchHist = []
 
-document.querySelector("#search-city").addEventListener("submit", function (event) {
+// document.querySelector("#search-city").addEventListener("submit", function (event) {
+$("#search-city").on("submit", function (event) {
     event.preventDefault();
-    var city = document.querySelector("#city").value
-    // console.log(city)
+    //     var city = document.querySelector("#city").value
+    var city = $("#city").val
+    console.log(city)
     searchHist.push(city)
-    // console.log(searchHist)
+    console.log(searchHist)
     localStorage.setItem('latest-city', city)
-    document.querySelector("#search-history").innerHTML = ""
-    for (i = 0; i < searchHist.length; i++) {
-        console.log(searchHist[i])
-        var div = document.createElement("div")
-        div.textContent = searchHist[i]
-        document.querySelector("#search-history").appendChild(div)
-    }
+    //     document.querySelector("#search-history").innerHTML = ""
+    //     for (i = 0; i < searchHist.length; i++) {
+    //         console.log(searchHist[i])
+    //         var div = document.createElement("div")
+    //         div.textContent = searchHist[i]
+    //         document.querySelector("#search-history").appendChild(div)
+    //     }
 })
+// })

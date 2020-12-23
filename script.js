@@ -34,11 +34,11 @@ function loadData(x) {
                 url: coordsURL,
                 method: "GET"
             }).then(function (answer) {// WHEN I view future weather conditions for that city
-                console.log(answer);
+                // console.log(answer);
                 for (var i = 0; i < 5; i++) {// THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
-                    $("#title" + i).text(dateFormat(parseInt(answer.daily[i].dt)));
+                    $("#title" + i).text(dateFormat(parseInt(answer.daily[i].dt)));// WHEN I click on a city in the search history
                     $("#weatherIcon" + i).attr("src", `http://openweathermap.org/img/wn/${answer.daily[i].weather[0].icon}@4x.png`);
-                    $("#temp" + i).text(answer.daily[i].temp.day + " °F");
+                    $("#temp" + i).text(answer.daily[i].temp.day + " °F");// THEN I am again presented with current and future conditions for that city
                     $("#hum" + i).text(answer.daily[i].humidity + "% humidity")
                 }
                 // console.log(answer.current.uvi);
@@ -61,28 +61,32 @@ function dateFormat(sequence) {
     return month + "/" + day + "/" + year
 }
 
-// WHEN I click on a city in the search history
-// THEN I am again presented with current and future conditions for that city
-// WHEN I open the weather dashboard
-// THEN I am presented with the last searched city forecast
 
-var searchHist = []
 
-// document.querySelector("#search-city").addEventListener("submit", function (event) {
-$("#search-city").on("submit", function (event) {
+
+var searchHist = JSON.parse(localStorage.getItem('latest-city')) || []
+
+$("#log").on("click", function (event) {
     event.preventDefault();
-    //     var city = document.querySelector("#city").value
-    var city = $("#city").val
-    console.log(city)
-    searchHist.push(city)
-    console.log(searchHist)
-    localStorage.setItem('latest-city', city)
-    //     document.querySelector("#search-history").innerHTML = ""
-    //     for (i = 0; i < searchHist.length; i++) {
-    //         console.log(searchHist[i])
-    //         var div = document.createElement("div")
-    //         div.textContent = searchHist[i]
-    //         document.querySelector("#search-history").appendChild(div)
-    //     }
+    var city = $("#city").val();
+    // console.log(city)
+    searchHist.unshift(city)
+    // console.log(searchHist)
+    localStorage.setItem('latest-city', JSON.stringify(searchHist))
+    showHist()
 })
-// })
+
+$(document).on("click", ".histBtn", function () {
+    loadData($(this).text())
+})
+function showHist() {// WHEN I open the weather dashboard
+    // THEN I am presented with the last searched city forecast
+    $("#search-history").empty()
+    for (i = 0; i < searchHist.length; i++) {
+        // console.log(searchHist[i])
+        var div = $("<div>").addClass("histBtn")
+        div.text(searchHist[i])
+        $("#search-history").append(div)
+    }
+}
+showHist();

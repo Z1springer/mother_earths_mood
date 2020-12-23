@@ -1,3 +1,4 @@
-/* body {
-    background-color: lightblue;
-} */
+/* A simple attribute that will change the curser to a pointing hand when it hovers over the previously searched city names */
+.histBtn {
+    cursor: pointer;
+}
